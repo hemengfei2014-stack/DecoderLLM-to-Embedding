@@ -1,0 +1,972 @@
+{
+  "datasets": {
+    "amazon_counterfactual": {
+      "rows": 8663,
+      "train_rows": 8576,
+      "test_rows": 87,
+      "neg_text_columns": 1,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "分类",
+      "description": "亚马逊多语种反事实检测数据，判断句子是否表达反事实陈述（二分类）。"
+    },
+    "amazon_polarity": {
+      "rows": 100000,
+      "train_rows": 99000,
+      "test_rows": 1000,
+      "neg_text_columns": 1,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "分类",
+      "description": "亚马逊评论情感极性数据集，区分正面与负面评价。"
+    },
+    "amazon_qa": {
+      "rows": 59340,
+      "train_rows": 58746,
+      "test_rows": 594,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "亚马逊问答数据集，查询-答案/段落检索任务。"
+    },
+    "amazon_reviews": {
+      "rows": 100000,
+      "train_rows": 99000,
+      "test_rows": 1000,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "亚马逊多语种评论集合，在此用于主题/语义聚类评估。"
+    },
+    "anli": {
+      "rows": 18801,
+      "train_rows": 18612,
+      "test_rows": 189,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "Adversarial NLI 数据集，在此用于相似检索/匹配。"
+    },
+    "arguana": {
+      "rows": 22848,
+      "train_rows": 22619,
+      "test_rows": 229,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "ArguAna 论证检索数据集，给定查询检索相关论证文章。"
+    },
+    "arxiv_clustering_p2p": {
+      "rows": 83476,
+      "train_rows": 82641,
+      "test_rows": 835,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "arXiv 论文语料的段落到段落聚类任务（P2P）。"
+    },
+    "arxiv_clustering_s2s": {
+      "rows": 83486,
+      "train_rows": 82651,
+      "test_rows": 835,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "arXiv 论文语料的句到句聚类任务（S2S）。"
+    },
+    "banking77": {
+      "rows": 9993,
+      "train_rows": 9893,
+      "test_rows": 100,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "银行业务意图数据集（77类），此处用于按意图进行聚类评估。"
+    },
+    "bioasq": {
+      "rows": 125248,
+      "train_rows": 123995,
+      "test_rows": 1253,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "BioASQ 生物医学问答基准，在此用于检索相关文献段落。"
+    },
+    "biorxiv_clustering_p2p": {
+      "rows": 57296,
+      "train_rows": 56723,
+      "test_rows": 573,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "bioRxiv 生物医学预印本语料的段落到段落聚类任务。"
+    },
+    "biorxiv_clustering_s2s": {
+      "rows": 57296,
+      "train_rows": 56723,
+      "test_rows": 573,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "bioRxiv 生物医学预印本语料的句到句聚类任务。"
+    },
+    "cnn_dm": {
+      "rows": 100000,
+      "train_rows": 99000,
+      "test_rows": 1000,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "CNN/DailyMail 新闻摘要语料，在此用于句到文段检索/匹配。"
+    },
+    "cola": {
+      "rows": 9571,
+      "train_rows": 9475,
+      "test_rows": 96,
+      "neg_text_columns": 1,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "分类",
+      "description": "CoLA 语言可接受性数据集，判断句子语法是否可接受（二分类）。"
+    },
+    "coliee": {
+      "rows": 454,
+      "train_rows": 449,
+      "test_rows": 5,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "COLIEE 法律判例检索与法律问答基准，在此用于判例检索。"
+    },
+    "eli5": {
+      "rows": 161345,
+      "train_rows": 159731,
+      "test_rows": 1614,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "ELI5 长答案问答数据集，在此用于检索答案来源段落。"
+    },
+    "emotion": {
+      "rows": 17944,
+      "train_rows": 17764,
+      "test_rows": 180,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "Twitter 文本的六类情感数据集（怒、惧、乐、爱、悲、惊），此处用于聚类。"
+    },
+    "fever": {
+      "rows": 106605,
+      "train_rows": 105538,
+      "test_rows": 1067,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "FEVER 事实验证数据集，在此用于检索支持/反驳的证据。"
+    },
+    "fiqa": {
+      "rows": 7452,
+      "train_rows": 7377,
+      "test_rows": 75,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "FiQA 金融领域问答/检索数据集。"
+    },
+    "hotpotqa": {
+      "rows": 120528,
+      "train_rows": 119322,
+      "test_rows": 1206,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "HotpotQA 多跳问答数据集，用于检索多篇证据段落。"
+    },
+    "imdb": {
+      "rows": 24904,
+      "train_rows": 24654,
+      "test_rows": 250,
+      "neg_text_columns": 1,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "分类",
+      "description": "大规模电影评论数据集，用于情感分类任务。"
+    },
+    "massive_intent": {
+      "rows": 13547,
+      "train_rows": 13411,
+      "test_rows": 136,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "MASSIVE 多语种 NLU 的意图分类切分，此处用于聚类评估。"
+    },
+    "massive_scenario": {
+      "rows": 13547,
+      "train_rows": 13411,
+      "test_rows": 136,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "MASSIVE 多语种 NLU 的场景分类切分，此处用于聚类评估。"
+    },
+    "medrxiv_clustering_p2p": {
+      "rows": 18659,
+      "train_rows": 18472,
+      "test_rows": 187,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "medRxiv 医学预印本语料的段落到段落聚类任务。"
+    },
+    "medrxiv_clustering_s2s": {
+      "rows": 18659,
+      "train_rows": 18472,
+      "test_rows": 187,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "medRxiv 医学预印本语料的句到句聚类任务。"
+    },
+    "miracl": {
+      "rows": 3379,
+      "train_rows": 3345,
+      "test_rows": 34,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "MIRACL 多语种信息检索基准，用于查询-文档检索。"
+    },
+    "mnli": {
+      "rows": 112075,
+      "train_rows": 110954,
+      "test_rows": 1121,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "MNLI 多域自然语言推理数据集，在此用于语义相似检索/匹配。"
+    },
+    "mrtidy": {
+      "rows": 3547,
+      "train_rows": 3511,
+      "test_rows": 36,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "Mr.TyDi 多语种密集检索基准，评估非英语语言的查询-文档检索。"
+    },
+    "msmarco": {
+      "rows": 365503,
+      "train_rows": 361847,
+      "test_rows": 3656,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "MS MARCO Passage 检索数据集，网页片段级问答检索基准。"
+    },
+    "mtop_domain": {
+      "rows": 17538,
+      "train_rows": 17362,
+      "test_rows": 176,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "MTOP 任务型语义解析数据集的域分类部分，此处用于语义聚类评估。"
+    },
+    "mtop_intent": {
+      "rows": 17896,
+      "train_rows": 17717,
+      "test_rows": 179,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "MTOP 任务型语义解析数据集的意图分类部分，此处用于聚类评估。"
+    },
+    "natural_questions": {
+      "rows": 97209,
+      "train_rows": 96236,
+      "test_rows": 973,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "Google Natural Questions 问答数据，在此用于检索相关证据段落。"
+    },
+    "nfcorpus": {
+      "rows": 1283,
+      "train_rows": 1270,
+      "test_rows": 13,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "Non-Factoid 问答语料，用于非事实型查询的段落检索。"
+    },
+    "paq": {
+      "rows": 638771,
+      "train_rows": 632383,
+      "test_rows": 6388,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "PAQ（Probably Asked Questions）海量问答对集合，用于查询-段落检索。"
+    },
+    "paq_part2": {
+      "rows": 300000,
+      "train_rows": 297000,
+      "test_rows": 3000,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "PAQ 第二部分扩展，海量问答对检索。"
+    },
+    "pubmedqa": {
+      "rows": 60227,
+      "train_rows": 59624,
+      "test_rows": 603,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "PubMedQA 生物医学问答数据集，在此用于检索相关文献段落。"
+    },
+    "qqp": {
+      "rows": 243598,
+      "train_rows": 241162,
+      "test_rows": 2436,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "Quora Question Pairs 相似问题数据集，在此用于相似问题检索。"
+    },
+    "reddit_clustering_p2p": {
+      "rows": 80000,
+      "train_rows": 79200,
+      "test_rows": 800,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "Reddit 帖子语料的段落到段落聚类任务。"
+    },
+    "reddit_clustering_s2s": {
+      "rows": 58141,
+      "train_rows": 57559,
+      "test_rows": 582,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "Reddit 帖子语料的句到句聚类任务。"
+    },
+    "s2orc_abstract_citation": {
+      "rows": 231587,
+      "train_rows": 229271,
+      "test_rows": 2316,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "基于 S2ORC 论文语料，摘要与引用关系的检索任务。"
+    },
+    "s2orc_title_abstract": {
+      "rows": 250000,
+      "train_rows": 247500,
+      "test_rows": 2500,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "基于 S2ORC 论文语料，标题与摘要的匹配/检索任务。"
+    },
+    "s2orc_title_citation": {
+      "rows": 132879,
+      "train_rows": 131550,
+      "test_rows": 1329,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "基于 S2ORC 论文语料，标题与引用关系的检索任务。"
+    },
+    "scifact": {
+      "rows": 859,
+      "train_rows": 850,
+      "test_rows": 9,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "SciFact 科学事实验证数据集，在此用于检索支持/反驳的论文证据。"
+    },
+    "sentence_compression": {
+      "rows": 175477,
+      "train_rows": 173722,
+      "test_rows": 1755,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "句子压缩语料，在此作为句子-目标压缩文本的匹配/检索任务。"
+    },
+    "snli": {
+      "rows": 54585,
+      "train_rows": 54039,
+      "test_rows": 546,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "SNLI 自然语言推理句对数据集，在此用于语义相似检索/匹配。"
+    },
+    "specter": {
+      "rows": 24717,
+      "train_rows": 24469,
+      "test_rows": 248,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "SPECTER 基于引文网络的论文表示/检索基准，用于论文相似检索。"
+    },
+    "squad": {
+      "rows": 89509,
+      "train_rows": 88613,
+      "test_rows": 896,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "SQuAD 机器阅读理解问答数据，在此构造查询-证据段落的检索任务。"
+    },
+    "stackexchange": {
+      "rows": 534705,
+      "train_rows": 529357,
+      "test_rows": 5348,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "StackExchange 问答语料，用于查询相关答案/帖子检索。"
+    },
+    "stackexchange_clustering_p2p": {
+      "rows": 80000,
+      "train_rows": 79200,
+      "test_rows": 800,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "StackExchange 问答语料的段落到段落聚类任务。"
+    },
+    "stackexchange_clustering_s2s": {
+      "rows": 56731,
+      "train_rows": 56163,
+      "test_rows": 568,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "StackExchange 问答语料的句到句聚类任务。"
+    },
+    "stackexchange_part2": {
+      "rows": 220000,
+      "train_rows": 217800,
+      "test_rows": 2200,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "StackExchange 问答语料扩展部分，用于检索。"
+    },
+    "stackexchangedupquestions_p2p": {
+      "rows": 203060,
+      "train_rows": 201029,
+      "test_rows": 2031,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "StackExchange 重复问题检索（段落到段落/问题到问题）。"
+    },
+    "stackexchangedupquestions_s2s": {
+      "rows": 183559,
+      "train_rows": 181723,
+      "test_rows": 1836,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "StackExchange 重复问题检索（句到句/问题到问题）。"
+    },
+    "stackoverflowdupquestions": {
+      "rows": 19847,
+      "train_rows": 19648,
+      "test_rows": 199,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "StackOverflow 重复问题检索数据集。"
+    },
+    "sts12": {
+      "rows": 1858,
+      "train_rows": 1839,
+      "test_rows": 19,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "STS12 语义文本相似度评估数据集，在此用于相似检索/匹配。"
+    },
+    "sts22": {
+      "rows": 389,
+      "train_rows": 385,
+      "test_rows": 4,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "STS22 语义文本相似度评估数据集，在此用于相似检索/匹配。"
+    },
+    "stsbenchmark": {
+      "rows": 3297,
+      "train_rows": 3264,
+      "test_rows": 33,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "STSBenchmark 标准语义相似度评估集，在此用于相似检索/匹配。"
+    },
+    "toxic_conversations": {
+      "rows": 49900,
+      "train_rows": 49401,
+      "test_rows": 499,
+      "neg_text_columns": 1,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "分类",
+      "description": "Civil Comments 平台评论的毒性检测数据，判断评论是否含有不当/攻击性内容。"
+    },
+    "triviaqa": {
+      "rows": 60025,
+      "train_rows": 59424,
+      "test_rows": 601,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "TriviaQA 开放域问答数据集，在此用于检索答案相关证据。"
+    },
+    "tweet_sentiment_extraction": {
+      "rows": 26732,
+      "train_rows": 26464,
+      "test_rows": 268,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "推特文本与情感相关短语集合，在此版本用于语义聚类评估。"
+    },
+    "twentynewsgroups": {
+      "rows": 11060,
+      "train_rows": 10949,
+      "test_rows": 111,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "聚类",
+      "description": "经典 20 类新闻分组数据集，用于话题/语义聚类。"
+    },
+    "xsum": {
+      "rows": 184383,
+      "train_rows": 182539,
+      "test_rows": 1844,
+      "neg_text_columns": 24,
+      "neg_input_id_columns": 0,
+      "sample_fields_present": {
+        "query": true,
+        "passage": true,
+        "query_input_ids": false,
+        "passage_input_ids": false
+      },
+      "type": "检索",
+      "description": "XSum 单句摘要数据集，在此用于句子-文段的检索/匹配。"
+    }
+  },
+  "totals": {
+    "total_rows": 5933988,
+    "total_train_rows": 5874624,
+    "total_test_rows": 59364,
+    "per_type": {
+      "分类": {
+        "rows": 193038,
+        "train_rows": 191106,
+        "test_rows": 1932
+      },
+      "检索": {
+        "rows": 4918949,
+        "train_rows": 4869743,
+        "test_rows": 49206
+      },
+      "聚类": {
+        "rows": 822001,
+        "train_rows": 813775,
+        "test_rows": 8226
+      }
+    }
+  },
+  "config": {
+    "train_batch_size": 16,
+    "train_epochs": 2,
+    "num_hard_neg": 7,
+    "max_seq_length": 1024,
+    "checkpointing_steps": 2000,
+    "validation_steps": 2000,
+    "experiment_id": "expA.0.6b+real+bs.16x4+neg.7+ctx.1024+2ep"
+  },
+  "estimates": {
+    "steps_per_epoch": 367164,
+    "total_steps": 734328,
+    "checkpointing_steps": 2000,
+    "num_step_checkpoints": 367,
+    "epoch_checkpoints": 2
+  }
+}

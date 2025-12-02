@@ -1,0 +1,2 @@
+from .bidirectional_deepseek_v3 import DeepseekV3BiModel, DeepseekV3BiForMNTP
+from .bidirectional_qwen3 import Qwen3BiModel, Qwen3BiForMNTP
