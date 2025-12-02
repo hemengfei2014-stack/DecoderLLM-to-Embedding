@@ -20,44 +20,6 @@
 
 ## 思路总览
 - 当前业界将 Decoder-only LLM 转化为 Embedding 的方案主要围绕以下 5 个环节展开：
-```mermaid
-flowchart TB
-  subgraph 数据工程
-    DE1[指令模板]
-    DE2[难负样本挖掘]
-    DE3[合成数据]
-    DE4[多任务混合]
-  end
-
-  subgraph 架构改造
-    AA1[零结构改动]
-    AA2[轻度改动]
-    AA3[双向注意力]
-  end
-
-  subgraph 表征提取策略
-    PS1[EOS/Last Token]
-    PS2[Mean Pooling]
-    PS3[Weighted/Attention]
-    PS4[Skip Instruction]
-  end
-
-  subgraph 训练目标与损失
-    LO1[对比学习 InfoNCE]
-    LO2[MRL]
-    LO3[Spread-out 正则]
-  end
-
-  subgraph 分阶段训练流程
-    TP1[阶段A: 对齐]
-    TP2[阶段B: 质量提升]
-    TP3[阶段C: 合并优化]
-    TP4[LoRA]
-  end
-
-  数据工程 --> 架构改造 --> 表征提取策略 --> 训练目标与损失 --> 分阶段训练流程
-  分阶段训练流程 --> 评测[MTEB / T2Retrieval]
-```
 
 ### 1. 架构改造（Architecture Adaptation）
 - 决定如何调整 LLM 原有的 Decoder-only 结构，以适应 Embedding 任务。方案从“零改动”到“重构”分为几个层级：
