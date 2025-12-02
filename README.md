@@ -21,39 +21,24 @@
 ## 思路总览
 - 当前业界将 Decoder-only LLM 转化为 Embedding 的方案主要围绕以下 5 个环节展开：
 
-### 1. 架构改造（Architecture Adaptation）
-- 决定如何调整 LLM 原有的 Decoder-only 结构，以适应 Embedding 任务。方案从“零改动”到“重构”分为几个层级：
-- 零结构改动（最推荐/低风险）：保持原有的 Causal Mask（因果注意力）和模型结构不变，依靠指令模板与特定池化方式适配。代表案例：F2LLM、Qwen3-Embedding。
-- 轻度改动：在模型顶部增加一个轻量级“表征头”（如 Linear 或 MLP），用于将隐状态投影到目标维度。
-- 深度改动（高性能）：移除 Causal Mask，启用双向注意力（Bidirectional Attention），使 Token 能看到全文上下文。代表案例：NV-Embed、Jina v4。
-
-### 2. 表征提取策略（Pooling Strategy）
-- 决定如何将模型输出的 Token 序列隐状态聚合为定长句子向量：
-- EOS/Last Token Pooling：取最后一个有效 Token 的向量，配合“零结构改动（保留因果注意力）”最常用。
-- Mean Pooling：取所有有效 Token 的平均值，更适合启用双向注意力的模型。
-- Attention Pooling：引入可学习的 Query 向量，对序列加权汇聚，捕捉更重要的语义信息。
-- 其他：在句首插入 `[CLS]`（CLS-like）或输出多向量（Multi-vector/ColBERT 风格）或输出Sparse Embedding。
-- Skip Instruction（跳过指令前缀）：部分数据使用如 `Instruct: ...`、`Query: ...` 的提示前缀，一方面能起到调节语义的作用，但是会干扰表示质量，因此需要在池化阶段仅聚合正文 token（例如 `Query:` 之后的文本），通过掩码限制聚合范围，兼容 `eos/mean/weighted_mean`。
-
-### 3. 训练目标与损失设计（Loss & Objectives）
-- 设计损失函数以指导模型学习高质量语义空间：
-- 核心：对比学习（Contrastive Learning）：使用 InfoNCE，通过 In-batch Negatives 或 Hard Negatives，拉近正样本对（Query-Doc），推远负样本。
-- 扩展：Matryoshka（MRL）支持：训练模型的前 k 维也能表征完整语义，支持推理时弹性裁剪向量维度（如 768/512/256）。
-- 正则：均匀性（Spread-out/Uniformity）：加入正则项，强制向量在超球面上均匀分布，防止各向异性（Anisotropy）与表达塌缩。
-
-### 4. 数据工程（Data Engineering）
-- 构建高质量、多样化的训练数据是关键：
-- 指令模板（Instruction Tuning）：使用如 `Instruct: ...\nQuery: ...` 的模板，让 LLM 理解当前任务（检索、分类、聚类等）。
-- 难负样本挖掘（Hard Negative Mining）：除了随机负样本，还需挖掘“似是而非”的难负样本，提升分辨力。
-- 合成数据：利用大模型生成大规模 Query-Document 对进行预训练。
-- 多任务混合：混合检索、STS（语义相似度）、聚类、代码搜索等任务数据，提升泛化能力。
-
-### 5. 分阶段训练流程（Training Pipeline）
-- 通常采用多阶段训练策略以达到最佳效果：
-- 阶段 A：大规模弱监督预训练（Alignment）：使用海量合成数据，快速对齐语义空间。
-- 阶段 B：高质量监督微调（Quality Boost）：使用人工标注或精选高质量数据集（如 MS MARCO）进行精细化训练。
-- 阶段 C：合并与优化（Consolidation）：可选步骤，通过模型权重合并（如 SLERP）或蒸馏，融合不同阶段或不同超参模型的优势。
-- LoRA：在选定模块注入低秩适配器，显著降低可训练参数与显存开销，与双向注意力、MRL、Spread-out、Skip Instruction 兼容，用于阶段化训练中的高效适配。
+| 核心环节 | 关键策略 | 详细说明与代表案例 |
+| :--- | :--- | :--- |
+| **1. 架构改造**<br>(Architecture Adaptation) | **零结构改动** (推荐) | 保持 Causal Mask 不变，仅靠指令与池化适配。<br>_案例：F2LLM, Qwen3-Embedding_ |
+| | **轻度改动** | 在模型顶部增加 Linear 或 MLP 作为表征头。 |
+| | **深度改动** (高性能) | 移除 Causal Mask，启用双向注意力 (Bidirectional Attention)。<br>_案例：NV-Embed, Jina v4_ |
+| **2. 表征提取**<br>(Pooling Strategy) | **EOS / Last Token** | 取最后一个有效 Token，常配合“零结构改动”使用。 |
+| | **Mean / Weighted** | 取所有 Token 均值或加权，适合双向注意力模型。 |
+| | **Attention Pooling** | 引入可学习 Query 向量捕捉重点信息。 |
+| | **Skip Instruction** | 池化时跳过 `Instruct:` 前缀，仅聚合正文 Token 以减少干扰。 |
+| | **其他策略** | 句首插入 `[CLS]`、多向量 (ColBERT)、稀疏向量 (Sparse) 等。 |
+| **3. 训练目标**<br>(Loss & Objectives) | **对比学习** (核心) | InfoNCE Loss，拉近正样本，推远负样本 (含 In-batch/Hard Negatives)。 |
+| | **Matryoshka (MRL)** | 支持弹性维度裁剪 (如 768/512/256 维均可用)。 |
+| | **均匀性正则** | Spread-out/Uniformity 强制向量均匀分布，防止表达塌缩 (Anisotropy)。 |
+| **4. 数据工程**<br>(Data Engineering) | **指令微调** | 使用 `Instruct: ...` 模板激发 LLM 理解当前任务（检索、分类、聚类等） |
+| | **难负样本** | 挖掘“似是而非”的样本提升分辨力。 |
+| | **合成与多任务** | 利用 LLM 生成数据，混合检索、STS、聚类等多任务数据。 |
+| **5. 训练流程**<br>(Training Pipeline) | **分阶段训练** | **Phase A**: 大规模弱监督预训练 (对齐空间)<br>**Phase B**: 高质量监督微调 (提升精度)<br>**Phase C**: 权重合并/蒸馏 (可选优化) |
+| | **LoRA 适配** | 降低显存开销，兼容上述所有策略的高效微调方案。 |
 
 
 ## 支持现状
