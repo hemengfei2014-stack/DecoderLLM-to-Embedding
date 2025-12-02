@@ -94,10 +94,9 @@ huggingface-cli download codefuse-ai/F2LLM --repo-type dataset --local-dir ./tra
 
 ### 步骤 2：执行预处理（分词）
 
-- 在 `DecoderLLM-to-Embedding/` 目录下运行分词脚本：
+- 在项目目录下运行分词脚本：
 
 ```
-cd DecoderLLM-to-Embedding
 python tokenize_data_qwen.py
 ```
 
@@ -107,7 +106,7 @@ python tokenize_data_qwen.py
 ### 训练数据简介
 
 - 数据规模与构成：
-  - 总样本数约 `5,933,988`，训练集约 `5,874,624`，验证集约 `59,364`（`data_stats.json`）。
+  - 总样本数约 `5,933,988`，训练集约 `5,874,624`，验证集约 `59,364`（详见 `data_stats.json`）。
   - 类型分布：检索约 `4,918,949`，聚类约 `822,001`，分类约 `193,038` 条目（训练/测试按 0.99/0.01 划分）。
 - 任务覆盖：
   - 检索：`MS MARCO`、`NaturalQuestions`、`HotpotQA`、`CNN/DailyMail`、`TriviaQA`、`PAQ` 等，含大量难负样本（`neg_text_columns=24`）。
