@@ -78,7 +78,6 @@
 
 - 数据来源：复用 F2LLM 项目训练数据集与预处理脚本。
 - 下载地址：`https://huggingface.co/datasets/codefuse-ai/F2LLM`
-- 预处理脚本：`tokenize_data_qwen.py` 脚本里用的是Qwen3的tokenizer, 如果用别的LLM转embedding, 则需要修改为对应LLM的tokenizer。
 - 预处理脚本：`tokenize_data_qwen.py` 脚本使用 Qwen3 的 tokenizer，如果用别的 LLM 转 embedding，则需要修改为对应 LLM 的 tokenizer。
 - 目的：将原始文本字段（`query`、`passage`、`negative_i`）分词为 `input_ids`，并统一输出为 parquet，供训练与评测使用。
 
