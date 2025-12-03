@@ -90,8 +90,8 @@ class DecoderLLMEmbeddingExtractor:
             if hasattr(self.lm, 'enable_input_require_grads'):
                 try:
                     self.lm.enable_input_require_grads()
-                except Exception:
-                    pass
+                except Exception as e:
+                    raise RuntimeError(f"Critical: Failed to enable input require grads. This is required for LoRA + Gradient Checkpointing training. Error: {e}")
             if getattr(self.args, 'lora_adapter_path', ""):
                 try:
                     self.lm.load_adapter(self.args.lora_adapter_path, adapter_name="default")
