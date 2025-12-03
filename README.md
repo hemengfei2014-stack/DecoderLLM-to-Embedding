@@ -23,9 +23,9 @@
 
 | 核心环节 | 关键策略 | 详细说明与代表案例 |
 | :--- | :--- | :--- |
-| **1. 架构改造**<br>(Architecture Adaptation) | **零结构改动** (推荐) | 保持 Causal Mask 不变，仅靠指令与池化适配。<br>_案例：F2LLM, Qwen3-Embedding_ |
+| **1. 架构改造**<br>(Architecture Adaptation) | **零结构改动** | 保持 Causal Mask 不变，靠指令与池化适配。<br>_案例：F2LLM, Qwen3-Embedding_ |
 | | **轻度改动** | 在模型顶部增加 Linear 或 MLP 作为表征头。 |
-| | **深度改动** (高性能) | 移除 Causal Mask，启用双向注意力 (Bidirectional Attention)。<br>_案例：NV-Embed, Jina v4_ |
+| | **深度改动**  | 移除 Causal Mask，启用双向注意力 (Bidirectional Attention)。<br>_案例：NV-Embed, Jina v4_ |
 | **2. 表征提取**<br>(Pooling Strategy) | **EOS / Last Token** | 取最后一个有效 Token，常配合“零结构改动”使用。 |
 | | **Mean / Weighted** | 取所有 Token 均值或加权，适合双向注意力模型。 |
 | | **Attention Pooling** | 引入可学习 Query 向量捕捉重点信息。 |
