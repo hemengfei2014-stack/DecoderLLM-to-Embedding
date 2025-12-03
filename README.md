@@ -30,7 +30,7 @@
 | | **Mean / Weighted** | 取所有 Token 均值或加权，适合双向注意力模型。 |
 | | **Attention Pooling** | 引入可学习 Query 向量捕捉重点信息。 |
 | | **Skip Instruction** | 池化时跳过 `Instruct:` 前缀，仅聚合正文 Token 以减少干扰。 |
-| | **其他策略** | 句首插入 `[CLS]`、多向量 (ColBERT)、稀疏向量 (Sparse) 等。 |
+| | **其他策略** | 多向量 (Multi-vector)、稀疏向量 (Sparse Embedding) 等。 |
 | **3. 训练目标**<br>(Loss & Objectives) | **对比学习** (核心) | InfoNCE Loss，拉近正样本，推远负样本 (含 In-batch/Hard Negatives)。 |
 | | **Matryoshka (MRL)** | 支持弹性维度裁剪 (如 768/512/256 维均可用)。 |
 | | **均匀性正则** | Spread-out/Uniformity 强制向量均匀分布，防止表达塌缩 (Anisotropy)。 |
